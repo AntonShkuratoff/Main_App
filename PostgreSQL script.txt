@@ -1,0 +1,31 @@
+CREATE DATABASE employeedb
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    CONNECTION LIMIT = -1;
+
+CREATE TABLE employee
+(
+	employee_id BIGSERIAL NOT NULL PRIMARY KEY,
+	first_name VARCHAR(50) NOT NULL,
+	last_name VARCHAR(50) NOT NULL,
+	department_id INTEGER NOT NULL,
+	job_title VARCHAR(30) NOT NULL,
+	gender VARCHAR(6) NOT NULL,
+	date_of_birth DATE NOT NULL
+);
+
+INSERT INTO employee (first_name, last_name, department_id, job_title, gender, date_of_birth)
+VALUES ('Aleksander', 'Bermudov', 1, 'HR', 'MALE', '1985-06-12');
+
+INSERT INTO employee (first_name, last_name, department_id, job_title, gender, date_of_birth)
+VALUES ('Helena', 'Smit', 1, 'HR', 'FEMALE', '1991-03-04');
+
+INSERT INTO employee (first_name, last_name, department_id, job_title, gender, date_of_birth)
+VALUES ('John', 'DOE', 2, 'LAWYER', 'MALE', '1974-08-20');
+
+INSERT INTO employee (first_name, last_name, department_id, job_title, gender, date_of_birth)
+VALUES ('Ketrin', 'Johnson', 3, 'ACCOUNTANT', 'FEMALE', '2000-02-02');
+
+INSERT INTO employee (first_name, last_name, department_id, job_title, gender, date_of_birth)
+VALUES ('Edvard', 'Glovson', 4, 'JAVA DEVELOPER', 'MALE', '1990-11-15');

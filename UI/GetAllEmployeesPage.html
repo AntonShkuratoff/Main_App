@@ -1,0 +1,50 @@
+<html>
+<head>
+    <title> Employees List </title>
+    <meta charset="UTF-8">
+    <script>
+        var baseurl = "http://localhost:8080/employees";
+
+        function loadEmployees() {
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", baseurl, true);
+            xmlHttp.onreadystatechange = function () {
+                if (xmlHttp.readyState ===4 && xmlHttp.status === 200) {
+                    var employee = JSON.parse(xmlHttp.responseText);
+                    var tableTop = `<table>
+			    <tr>
+			        <th>Id</th>
+			        <th>First Name</th>
+			        <th>Last Name</th>
+			        <th>Department ID</th>
+			        <th>Job Title</th>
+			        <th>Gender</th>
+			        <th>Date of birth</th>
+			    </tr>`;
+                    var body = "";
+                    for (i = 0; i < employee.length; i++) {
+                        body += "<tr><td>" + employee[i].id + "</td>" +
+                            "<td>" + employee[i].firstName + "</td>" +
+                            "<td>" + employee[i].lastName + "</td>" +
+                            "<td>" + employee[i].departmentId + "</td>" +
+                            "<td>" + employee[i].jobTitle + "</td>" +
+                            "<td>" + employee[i].gender + "</td>" +
+                            "<td>" + employee[i].date_of_birth + "</td></tr>";
+                    }
+                    var tableBottom = "</table>";
+                    var tbl = tableTop + body + tableBottom;
+                    document.getElementById("employeeInfo").innerHTML = tbl;
+                }
+            };
+            xmlHttp.send();
+        }
+
+        window.onload = function () {
+            loadEmployees();
+        }
+    </script>
+</head>
+<body>
+<div id="employeeInfo"></div>
+</body>
+</html>
